@@ -13,6 +13,8 @@ public class BankModel {
     @GeneratedValue
     private Long id;
 
+    private String name;
+
     // Agrega aquí los campos adicionales
 
     public Long getId() {
@@ -21,5 +23,13 @@ public class BankModel {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
