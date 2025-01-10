@@ -1,25 +1,10 @@
-package com.api.heroes.models.DTO;
+package com.api.heroes.DTO;
 
-public class UserDTO {
-    private Long id;
+public class RegisterDTO {
     private String name;
     private String email;
     private String username;
-
-    public UserDTO(Long id, String name, String email, String username) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.username = username;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    private String password;
 
     public String getName() {
         return name;
@@ -44,5 +29,12 @@ public class UserDTO {
     public void setUsername(String username) {
         this.username = username;
     }
-}
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+}

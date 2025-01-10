@@ -1,8 +1,8 @@
 package com.api.heroes.controllers;
 
-import com.api.heroes.models.DTO.AuthResponse;
-import com.api.heroes.models.DTO.LoginDTO;
-import com.api.heroes.models.DTO.RegisterDTO;
+import com.api.heroes.DTO.AuthResponse;
+import com.api.heroes.DTO.LoginDTO;
+import com.api.heroes.DTO.RegisterDTO;
 import com.api.heroes.services.AuthService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

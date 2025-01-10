@@ -1,6 +1,5 @@
 package com.api.heroes.controllers;
 
-import com.api.heroes.models.DTO.UserDTO;
 import com.api.heroes.models.UserModel;
 import com.api.heroes.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,25 +15,18 @@ public class UserController {
     private UserService userService;
 
     @GetMapping
-    public ArrayList<UserDTO> getUser() {
-        ArrayList<UserModel> users = this.userService.getAllUsers();
-        ArrayList<UserDTO> usersDTO = new ArrayList<>();
-        for (UserModel user : users) {
-            usersDTO.set(users.indexOf(user), this.userService.convertToDTO(user));
-        }
-        return usersDTO;
+    public ArrayList<UserModel> getUser() {
+        return this.userService.getAllUsers();
     }
 
     @GetMapping("/{id}")
-    public UserDTO getUserById(@PathVariable Long id) {
-        UserModel user = this.userService.getUserById(id);
-        return this.userService.convertToDTO(user);
+    public UserModel getUserById(@PathVariable Long id) {
+        return this.userService.getUserById(id);
     }
 
     @PutMapping
-    public UserDTO updateUser(@RequestBody UserModel user) {
-        UserModel updatedUser = this.userService.updateUser(user);
-        return this.userService.convertToDTO(updatedUser);
+    public UserModel updateUser(@RequestBody UserModel user) {
+        return this.userService.updateUser(user);
     }
 
     @DeleteMapping("/{id}")

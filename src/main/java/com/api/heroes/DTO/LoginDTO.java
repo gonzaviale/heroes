@@ -1,4 +1,4 @@
-package com.api.heroes.models.DTO;
+package com.api.heroes.DTO;
 
 public class LoginDTO {
     // Getters y setters

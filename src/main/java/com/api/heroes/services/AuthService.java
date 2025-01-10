@@ -1,8 +1,8 @@
 package com.api.heroes.services;
 
-import com.api.heroes.models.DTO.AuthResponse;
-import com.api.heroes.models.DTO.LoginDTO;
-import com.api.heroes.models.DTO.RegisterDTO;
+import com.api.heroes.DTO.AuthResponse;
+import com.api.heroes.DTO.LoginDTO;
+import com.api.heroes.DTO.RegisterDTO;
 import com.api.heroes.models.Role;
 import com.api.heroes.models.UserModel;
 import com.api.heroes.repositories.IUserRepository;

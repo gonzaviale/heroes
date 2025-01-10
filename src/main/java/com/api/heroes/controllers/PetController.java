@@ -1,6 +1,5 @@
 package com.api.heroes.controllers;
 
-import com.api.heroes.models.DTO.PetDTO;
 import com.api.heroes.models.PetModel;
 import com.api.heroes.services.PetService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,10 +25,8 @@ public class PetController {
     }
 
     @PostMapping
-    public PetModel create(@RequestBody PetDTO entity) {
-        PetModel pet = new PetModel();
-        pet.setName(entity.getName());
-        return service.create(pet);
+    public PetModel create(@RequestBody PetModel entity) {
+        return service.create(entity);
     }
 
     @DeleteMapping("/{id}")
