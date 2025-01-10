@@ -1,5 +1,6 @@
 package com.api.heroes.models;
 
+import com.api.heroes.models.enumerators.Role;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

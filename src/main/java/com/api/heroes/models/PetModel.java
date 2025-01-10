@@ -1,5 +1,7 @@
 package com.api.heroes.models;
 
+import com.api.heroes.models.enumerators.Status;
+import com.api.heroes.models.enumerators.TypeOfPet;
 import jakarta.persistence.*;
 
 @Entity
@@ -9,11 +11,16 @@ public class PetModel {
     @GeneratedValue
     private Long id;
     private String name;
-    private String type;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private TypeOfPet type;
     private String bloodType;
     private String diagnosis;
     private String age;
     private String weight;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Status status;
     @ManyToOne
     @JoinColumn(name = "owner_id")
     private UserModel owner;
@@ -50,11 +57,11 @@ public class PetModel {
         this.bloodType = bloodType;
     }
 
-    public String getType() {
+    public TypeOfPet getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(TypeOfPet type) {
         this.type = type;
     }
 
@@ -81,5 +88,13 @@ public class PetModel {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 }

@@ -1,10 +1,7 @@
 package com.api.heroes.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import com.api.heroes.models.enumerators.Status;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "bank")
@@ -12,10 +9,16 @@ public class BankModel {
     @Id
     @GeneratedValue
     private Long id;
-
     private String name;
-
-    // Agrega aquí los campos adicionales
+    private String address;
+    private String phone;
+    private String workingHours;
+    private Integer score;
+    @Enumerated(EnumType.STRING)
+    private Status status;
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private UserModel user;
 
     public Long getId() {
         return id;
@@ -31,5 +34,53 @@ public class BankModel {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getWorkingHours() {
+        return workingHours;
+    }
+
+    public void setWorkingHours(String workingHours) {
+        this.workingHours = workingHours;
+    }
+
+    public Integer getScore() {
+        return score;
+    }
+
+    public void setScore(Integer score) {
+        this.score = score;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public UserModel getUser() {
+        return user;
+    }
+
+    public void setUser(UserModel user) {
+        this.user = user;
     }
 }
