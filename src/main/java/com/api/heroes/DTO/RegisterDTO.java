@@ -8,7 +8,8 @@ public class RegisterDTO {
     private String username;
     private String password;
     private Role role;
-    private BanKDTO bank;
+    private BankDTO bank;
+    private VeterinarianDTO veterinarian;
 
     public String getName() {
         return name;
@@ -50,50 +51,19 @@ public class RegisterDTO {
         this.role = role;
     }
 
-    public BanKDTO getBank() {
+    public BankDTO getBank() {
         return bank;
     }
 
-    public void setBank(BanKDTO bank) {
+    public void setBank(BankDTO bank) {
         this.bank = bank;
     }
 
-    public static class BanKDTO {
-        private String name;
-        private String address;
-        private String phone;
-        private String workingHours;
+    public VeterinarianDTO getVeterinarian() {
+        return veterinarian;
+    }
 
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getAddress() {
-            return address;
-        }
-
-        public void setAddress(String address) {
-            this.address = address;
-        }
-
-        public String getPhone() {
-            return phone;
-        }
-
-        public void setPhone(String phone) {
-            this.phone = phone;
-        }
-
-        public String getWorkingHours() {
-            return workingHours;
-        }
-
-        public void setWorkingHours(String workingHours) {
-            this.workingHours = workingHours;
-        }
+    public void setVeterinarian(VeterinarianDTO veterinarian) {
+        this.veterinarian = veterinarian;
     }
 }

@@ -7,7 +7,7 @@ public class CodeGenerator {
 
     public static void main(String[] args) {
         // Nombre de la clase base
-        String className = "Bank"; // Cambia esto por el nombre de la entidad que necesites
+        String className = "ChatRoom"; // Cambia esto por el nombre de la entidad que necesites
 
         // Generar los archivos en las carpetas correspondientes
         try {

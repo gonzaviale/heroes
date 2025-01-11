@@ -8,7 +8,7 @@ import jakarta.persistence.*;
 @Table(name = "pet")
 public class PetModel {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     @Enumerated(EnumType.STRING)
