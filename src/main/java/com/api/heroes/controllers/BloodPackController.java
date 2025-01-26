@@ -38,4 +38,9 @@ public class BloodPackController {
     public BloodPackModel update(@PathVariable Long id, @RequestBody BloodPackModel entity) {
         return service.update(id, entity);
     }
+
+    @GetMapping("/getByBank/{id}")
+    public List<BloodPackModel> getByBank(@PathVariable Long id){
+        return service.getByBank(id);
+    }
 }
