@@ -34,26 +34,17 @@ public class AuthService {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
         UserDetails user= userRepository.findByUsername(request.getUsername()).orElseThrow();
         UserModel userModel = userRepository.findByUsername(request.getUsername()).orElseThrow();
-        if (userModel.getRole() == Role.BANK) {
-            BankModel bank = bankRepository.findByUser(userModel).orElseThrow();
-            if (bank.getStatus() == Status.REFUSED || bank.getStatus() == Status.UNDER_REVIEW) {
-                throw new RuntimeException("Bank is refused");
-            }
-        }
-        if (userModel.getRole() == Role.VETERINARIAN) {
-            VeterinarianModel veterinarian = veterinarianRepository.findByUser(userModel).orElseThrow();
-            if (veterinarian.getStatus() == Status.REFUSED || veterinarian.getStatus() == Status.UNDER_REVIEW) {
-                throw new RuntimeException("Veterinarian is refused");
-            }
-        }
+        verifyRole(userModel);
         String token=jwtService.getToken(user);
         return AuthResponse.builder()
                 .token(token)
+                .role(userModel.getRole())
                 .build();
 
     }
 
     public AuthResponse register(RegisterDTO request) {
+        if (request.getRole() == Role.ADMIN) return null;
         UserModel user = UserModel.builder()
                 .username(request.getUsername())
                 .password(passwordEncoder.encode( request.getPassword()))
@@ -100,6 +91,31 @@ public class AuthService {
         veterinarian.setStatus(Status.UNDER_REVIEW);
         veterinarian.setScore(0);
         veterinarianRepository.save(veterinarian);
+    }
+
+
+    private void verifyRole(UserModel userModel) {
+        if (userModel.getRole() == Role.USER)
+            return;
+        verifyStatusVet(userModel);
+        verifyStatusBank(userModel);
+    }
+
+    private void verifyStatusVet(UserModel userModel){
+        if (userModel.getRole() == Role.VETERINARIAN) {
+            VeterinarianModel veterinarian = veterinarianRepository.findByUser(userModel).orElseThrow();
+            if (veterinarian.getStatus() == Status.REFUSED || veterinarian.getStatus() == Status.UNDER_REVIEW) {
+                throw new RuntimeException("Veterinarian is refused");
+            }
+        }
+    }
+    private void verifyStatusBank(UserModel userModel){
+        if (userModel.getRole() == Role.BANK) {
+            BankModel bank = bankRepository.findByUser(userModel).orElseThrow();
+            if (bank.getStatus() == Status.REFUSED || bank.getStatus() == Status.UNDER_REVIEW) {
+                throw new RuntimeException("Bank is refused");
+            }
+        }
     }
 
 }
