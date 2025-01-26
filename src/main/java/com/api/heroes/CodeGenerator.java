@@ -7,7 +7,7 @@ public class CodeGenerator {
 
     public static void main(String[] args) {
         // Nombre de la clase base
-        String className = "ChatRoom"; // Cambia esto por el nombre de la entidad que necesites
+        String className = "Reservation"; // Cambia esto por el nombre de la entidad que necesites
 
         // Generar los archivos en las carpetas correspondientes
         try {
@@ -31,23 +31,17 @@ public class CodeGenerator {
                 import jakarta.persistence.Id;
                 import jakarta.persistence.GeneratedValue;
                 import jakarta.persistence.GenerationType;
-
+                import lombok.Getter;
+                import lombok.Setter;
+                
+                @Setter
+                @Getter
                 @Entity
                 @Table(name = "%s")
                 public class %sModel {
                     @Id
                     @GeneratedValue(strategy = GenerationType.IDENTITY)
                     private Long id;
-
-                    // Agrega aquí los campos adicionales
-
-                    public Long getId() {
-                        return id;
-                    }
-
-                    public void setId(Long id) {
-                        this.id = id;
-                    }
                 }
                 """.formatted(className.toLowerCase(), className);
 
