@@ -1,10 +1,14 @@
 package com.api.heroes.models;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Setter
+@Getter
 @Entity
 @Table(name = "chatroom")
 public class ChatRoomModel {
@@ -21,35 +25,4 @@ public class ChatRoomModel {
     private Integer numberOfUsers;
     private String status;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public List<UserModel> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<UserModel> users) {
-        this.users = users;
-    }
-
-    public Integer getNumberOfUsers() {
-        return numberOfUsers;
-    }
-
-    public void setNumberOfUsers(Integer numberOfUsers) {
-        this.numberOfUsers = numberOfUsers;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
 }
