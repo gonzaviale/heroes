@@ -1,4 +1,4 @@
-package Services;
+package com.api.heroes.services;
 
 import com.api.heroes.models.PetModel;
 import com.api.heroes.models.enumerators.Status;
