@@ -4,7 +4,6 @@ import com.api.heroes.models.PetModel;
 import com.api.heroes.models.enumerators.Status;
 import com.api.heroes.models.enumerators.TypeOfPet;
 import com.api.heroes.repositories.IPetRepository;
-import com.api.heroes.services.PetService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
