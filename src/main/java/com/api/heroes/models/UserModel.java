@@ -41,6 +41,7 @@ public class UserModel implements UserDetails {
     Role role;
 
     @ManyToMany(mappedBy = "users")
+    @Builder.Default
     private List<ChatRoomModel> chatRooms = new ArrayList<>();
 
     @Override
