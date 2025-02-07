@@ -27,13 +27,14 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authRequest ->
                         authRequest
-                                .requestMatchers("/auth/**").permitAll()
                                 .requestMatchers(
+                                        "/auth/**",
                                         "/swagger-ui/**",
                                         "/v3/api-docs/**",
                                         "/swagger-ui.html",
                                         "/v3/api-docs",
-                                        "/v3/api-docs.yaml"
+                                        "/v3/api-docs.yaml",
+                                        "/wschat/**"
                                 ).permitAll()
                                 .anyRequest().authenticated()
                 )
